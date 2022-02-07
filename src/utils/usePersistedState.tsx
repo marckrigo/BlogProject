@@ -5,8 +5,6 @@ function usePersistedState(key: string, initialTheme: any) {
       if (typeof window !== "undefined") {
         const storagedTheme = window.localStorage.getItem(key);
 
-        console.log(JSON.parse(storagedTheme));
-
         return JSON.parse(storagedTheme) || initialTheme;
       }
       return(initialTheme);
