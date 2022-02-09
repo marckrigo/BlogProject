@@ -1,26 +1,24 @@
-import { BlogPost, BlogPostContainer, BlogPostText } from "./styled";
+import * as S from "./styled";
 
 interface Props {
   images: object;
 }
 
 const Post: React.FC<Props> = ({images}) => {
-  const img = Object.keys(images);
-
   return (
     <>
-    <BlogPostContainer>
+    <S.BlogPostContainer>
       {Object.keys(images).map((key) => {
         return (
-          <BlogPost key={key}>
+          <S.BlogPost key={key}>
             <img src={images[key].urls.full} />
-            <BlogPostText>
+            <S.BlogPostText>
               <p>Nam suscipit dui euismod quam curabitur tempus id, aenean dictum venenatis sodales mollis posuere faucibus rhoncus, laoreet congue sollicitudin cras ut convallis. ligula consectetur condimentum hendrerit.</p>
-            </BlogPostText>
-          </BlogPost>
+            </S.BlogPostText>
+          </S.BlogPost>
         )
       })}
-      </BlogPostContainer>
+      </S.BlogPostContainer>
     </>
   );
 }

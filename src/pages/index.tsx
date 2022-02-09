@@ -1,16 +1,30 @@
-import Head from 'next/head'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Layout from '../components/Layout';
+import Post from '../components/Post/Post';
+
+const accessKey = process.env.REACT_AAP_ACCESSKEY;
 
 const Home: React.FC = () => {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      const {data} = await axios.get(`https://api.unsplash.com/photos/?client_id=${accessKey}&per_page=8`);
+
+      setImages(data);
+    };
+
+    fetchImages();
+
+  }, []);
 
   return (
-    <div>
-      <Head>
-        <title>Marmelo's Blog</title>
-      </Head>
-
-      <main>
+    <Layout title={`Marmelo's Blog`}>
+    <main>
+        <Post images={images}/> 
       </main>
-    </div>
+    </Layout>
   )
 }
 

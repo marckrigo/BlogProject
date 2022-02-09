@@ -1,20 +1,26 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import Switch from 'react-switch';
+import { useContextSelector } from 'use-context-selector';
 
-import { BlogHeader } from "./styled";
+import * as S from "./styled";
 import { shade } from 'polished';
+import { BaseContext } from "../../context/Base";
 
-interface Props {
-  toggleTheme(): void;
-}
-
-const Header: React.FC<Props> = ( { toggleTheme} ) => {
+const Header = () => {
   const { colors, title } = useContext(ThemeContext);
 
+  const theme = useContextSelector(BaseContext, context => context.theme)
+  const setTheme = useContextSelector(BaseContext, context => context.setTheme)
+  
+  const toggleTheme = () => { 
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+  }
+
   return (
-    <BlogHeader>
-      Marmelo's Blog
+    <S.BlogHeader>
+      <p>Marmelo's Blog</p>
 
       <Switch
         onChange={toggleTheme}
@@ -27,7 +33,7 @@ const Header: React.FC<Props> = ( { toggleTheme} ) => {
         offColor={shade(0.15, colors.primary)}
         onColor={colors.background}
       />
-    </BlogHeader>
+    </S.BlogHeader>
   );
 }
  

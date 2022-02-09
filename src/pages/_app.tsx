@@ -1,43 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
-import axios from "axios";
+import { createContext } from 'use-context-selector';
 
-import {lightTheme, darkTheme, GlobalStyles} from "../styles/theme";
+import { GlobalStyles, lightTheme, darkTheme } from "../styles/theme";
 
-import Header from "../components/Header/Header";
-import Post from "../components/Post/Post";
+import Layout from "../components/Layout";
+import { Theme } from "../styles/styled";
+import { BaseProvider } from "../context/Base";
 
-import usePersistedState from "../utils/usePersistedState";
+export const AppContext = createContext(null)
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const [theme, setTheme] = usePersistedState('theme', lightTheme);
-  
-  const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? darkTheme: lightTheme);
-  }
-
-  const [images, setImages] = useState([]);
-  const accessKey = process.env.REACT_AAP_ACCESSKEY;
+  const [theme, setTheme] = useState<Theme>()
 
   useEffect(() => {
-    const fetchImages = async () => {
-      const {data} = await axios.get(`https://api.unsplash.com/photos/?client_id=${accessKey}&per_page=8`);
+    const localTheme = JSON.parse(localStorage.getItem('theme')) ?? 'light'
+    setTheme(localTheme)
+  }, [])
 
-      setImages(data);
-    };
-
-    fetchImages();
-
-  }, []);
+  const onSetTheme = (theme: Theme) => {
+    localStorage.setItem('theme', JSON.stringify(theme));
+    setTheme(theme)
+  }
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Component {...pageProps} />
-      <Header toggleTheme={toggleTheme} />
-      <Post images={images}/> 
-    </ThemeProvider>
+    <BaseProvider theme={theme} setTheme={onSetTheme}>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        {theme && <Component {...pageProps} />}
+      </ThemeProvider>
+    </BaseProvider>
   )
 }
 
