@@ -21,7 +21,8 @@ export const darkTheme = {
     primary: '#23272A',
     secondary: '#23272A',
     border: '#383C3F',
-    textpost: '#efeff1'
+    textpost: '#efeff1',
+    blogpost: '#2c2f33'
   }
 }
 
