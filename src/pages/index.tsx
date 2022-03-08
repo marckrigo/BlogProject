@@ -10,7 +10,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const fetchImages = async () => {
-      const {data} = await axios.get(`https://api.unsplash.com/photos/?client_id=${accessKey}&per_page=8`);
+      const {data} = await axios.get(`https://api.unsplash.com/photos/?client_id=${accessKey}&per_page=10`);
 
       setImages(data);
     };
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
 
   return (
     <Layout title={`Marmelo's Blog`}>
-    <main>
+      <main>
         <Post images={images}/> 
       </main>
     </Layout>

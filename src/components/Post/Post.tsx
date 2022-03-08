@@ -1,5 +1,5 @@
 import * as S from "./styled";
-
+import Image from 'next/image'
 interface Props {
   images: object;
 }
@@ -11,9 +11,17 @@ const Post: React.FC<Props> = ({images}) => {
       {Object.keys(images).map((key) => {
         return (
           <S.BlogPost key={key}>
-            <img src={images[key].urls.full} />
+            <S.BlogPostImg>
+              <Image
+                src={images[key].urls.regular} 
+                alt={images[key].alt_description}
+                layout="fill"
+                priority
+                quality={50}
+              />
+            </S.BlogPostImg>
             <S.BlogPostText>
-              <p>Nam suscipit dui euismod quam curabitur tempus id, aenean dictum venenatis sodales mollis posuere faucibus rhoncus, laoreet congue sollicitudin cras ut convallis. ligula consectetur condimentum hendrerit.</p>
+              <p>{images[key].description ? images[key].description : images[key].user.bio} </p>
             </S.BlogPostText>
           </S.BlogPost>
         )

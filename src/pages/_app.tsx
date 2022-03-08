@@ -5,7 +5,6 @@ import { createContext } from 'use-context-selector';
 
 import { GlobalStyles, lightTheme, darkTheme } from "../styles/theme";
 
-import Layout from "../components/Layout";
 import { Theme } from "../styles/styled";
 import { BaseProvider } from "../context/Base";
 
@@ -20,7 +19,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   }, [])
 
   const onSetTheme = (theme: Theme) => {
-    localStorage.setItem('theme', JSON.stringify(theme));
+    localStorage.setItem('theme', JSON.stringify(theme))
     setTheme(theme)
   }
 

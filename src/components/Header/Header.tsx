@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <S.BlogHeader>
-      <p>Marmelo's Blog</p>
+      <p>Marmelo`s Blog</p>
 
       <Switch
         onChange={toggleTheme}
