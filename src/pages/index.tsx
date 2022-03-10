@@ -21,9 +21,7 @@ const Home: React.FC = () => {
 
   return (
     <Layout title={`Marmelo's Blog`}>
-      <main>
-        <Post images={images}/> 
-      </main>
+      <Post images={images}/> 
     </Layout>
   )
 }
