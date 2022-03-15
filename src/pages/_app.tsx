@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { AppProps } from "next/app";
-import { ThemeProvider } from "styled-components";
-import { createContext } from 'use-context-selector';
+import React, { useEffect, useState } from "react"
+import { AppProps } from "next/app"
+import { ThemeProvider } from "styled-components"
+import { createContext } from 'use-context-selector'
 
-import { GlobalStyles, lightTheme, darkTheme } from "../styles/theme";
+import { GlobalStyles, lightTheme, darkTheme } from "../styles/theme"
 
-import { Theme } from "../styles/styled";
-import { BaseProvider } from "../context/Base";
+import { Theme } from "../styles/styled"
+import { BaseProvider } from "../context/Base"
 
 export const AppContext = createContext(null)
 

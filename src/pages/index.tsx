@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import Post from '../components/Post/Post';
 
-const accessKey = process.env.REACT_AAP_ACCESSKEY;
+const accessKey = process.env.REACT_APP_ACCESSKEY;
 
 const Home: React.FC = () => {
   const [images, setImages] = useState([]);
@@ -20,7 +20,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <Layout title={`Marmelo's Blog`}>
+    <Layout title={`Personal Blog`}>
       <Post images={images}/> 
     </Layout>
   )

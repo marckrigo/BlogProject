@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "styled-components";
-import Switch from 'react-switch';
-import { useContextSelector } from 'use-context-selector';
+import React, { useContext } from "react"
+import { ThemeContext } from "styled-components"
+import Switch from 'react-switch'
+import { useContextSelector } from 'use-context-selector'
 
-import * as S from "./styled";
-import { shade } from 'polished';
-import { BaseContext } from "../../context/Base";
+import * as S from "./styled"
+import { shade } from 'polished'
+import { BaseContext } from "../../context/Base"
 
 const Header = () => {
   const { colors, title } = useContext(ThemeContext);
@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <S.BlogHeader>
-      <p>Marmelo`s Blog</p>
+      <p>Personal Blog</p>
 
       <Switch
         onChange={toggleTheme}
@@ -37,5 +37,5 @@ const Header = () => {
   );
 }
  
-export default Header;
+export default Header
 

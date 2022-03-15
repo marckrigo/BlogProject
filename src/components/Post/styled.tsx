@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const BlogPostContainer = styled.div`
-	margin: 70px auto;
+	margin: 70px auto 30px auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
